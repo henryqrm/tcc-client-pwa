@@ -31,21 +31,21 @@ module.exports = {
     ]
   },
   "eslint.validate": [{
-      "language": "html",
-      "autoFix": true
-    },
-    {
-      "language": "vue",
-      "autoFix": true
-    },
-    {
-      "language": "javascript",
-      "autoFix": true
-    },
-    {
-      "language": "javascriptreact",
-      "autoFix": true
-    }
+    "language": "html",
+    "autoFix": true
+  },
+  {
+    "language": "vue",
+    "autoFix": true
+  },
+  {
+    "language": "javascript",
+    "autoFix": true
+  },
+  {
+    "language": "javascriptreact",
+    "autoFix": true
+  }
   ],
   "eslint.run": "onSave",
   "eslint.autoFixOnSave": true,
