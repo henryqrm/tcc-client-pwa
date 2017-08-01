@@ -1,19 +1,25 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import 'reset-css';
-import f7 from 'framework7';
-import 'framework7/dist/css/framework7.material.css';
-import 'framework7/dist/css/framework7.material.colors.css';
-// import 'framework7/dist/css/framework7.ios.css';
-// import 'framework7/dist/css/framework7.ios.colors.css';
+// import 'reset-css';
+
 
 import Vue from 'vue';
+import 'framework7';
+
+// Import F7 Vue Plugin
+import Framework7Vue from 'framework7-vue';
+
+// Import F7 iOS Theme Styles
+// import 'framework7/dist/css/framework7.ios.min.css';
+// import 'framework7/dist/css/framework7.ios.colors.min.css';
+//  OR for Material Theme:
+import 'framework7/dist/css/framework7.material.min.css';
+import 'framework7/dist/css/framework7.material.colors.min.css';
+
 import vueLogger from 'vue-logger';
 
+import Routes from './router';
 import App from './App';
-import router from './router';
 
-Vue.use(f7);
+Vue.use(Framework7Vue);
 
 Vue.use(vueLogger, {
   // prefix: new Date(),
@@ -27,7 +33,11 @@ Vue.config.productionTip = false;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
   template: '<App/>',
+  framework7: {
+    root: '#app',
+    material: true,
+    routes: Routes,
+  },
   components: { App },
 });
