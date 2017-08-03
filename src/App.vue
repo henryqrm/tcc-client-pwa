@@ -34,11 +34,9 @@
       <f7-view id="main-view" navbar-through :dynamic-navbar="true" main>
         <!-- iOS Theme Navbar -->
         <f7-navbar v-if="$theme.ios">
-          <f7-nav-left>
-            <f7-link icon="icon-bars" open-panel="left"></f7-link>
-          </f7-nav-left>
           <f7-nav-center sliding>Cardápio</f7-nav-center>
           <f7-nav-right>
+            <span>Menu</span>
             <f7-link icon="icon-bars" open-panel="right"></f7-link>
           </f7-nav-right>
         </f7-navbar>
@@ -48,6 +46,7 @@
             <f7-navbar v-if="$theme.material">
               <f7-nav-center sliding>Cardápio</f7-nav-center>
               <f7-nav-right>
+                <span>Menu</span>
                 <f7-link icon="icon-bars" open-panel="right"></f7-link>
               </f7-nav-right>
             </f7-navbar>
@@ -83,6 +82,21 @@
                 </f7-col>
               </f7-grid>
             </f7-block>
+            <f7-fab-speed-dial>
+              <!-- Actions -->
+              <f7-fab-actions>
+                <f7-fab-action color="pink" @click="onActionClick">A</f7-fab-action>
+                <f7-fab-action color="orange" @click="onActionClick">B</f7-fab-action>
+                <f7-fab-action color="green" @click="onActionClick">C</f7-fab-action>
+              </f7-fab-actions>
+              <!-- FAB -->
+              <f7-fab>
+                <!-- First icon to open Actions -->
+                <f7-icon icon="icon-plus"></f7-icon>
+                <!-- Second icon to close Actions -->
+                <f7-icon icon="icon-close"></f7-icon>
+              </f7-fab>
+            </f7-fab-speed-dial>
           </f7-page>
         </f7-pages>
       </f7-view>
@@ -106,3 +120,11 @@ export default {
   },
 };
 </script>
+<style scoped>
+#app {
+  max-width: 768px;
+  margin: 0 auto;
+  background-color: black;
+}
+</style>
+

@@ -22,9 +22,9 @@ import App from './App';
 Vue.use(Framework7Vue);
 
 Vue.use(vueLogger, {
-  // prefix: new Date(),
-  // dev: true,
-  // shortname: true,
+  prefix: new Date(),
+  dev: true,
+  shortname: true,
   levels: ['log', 'warn', 'debug', 'error', 'dir'],
 });
 
