@@ -1,11 +1,14 @@
 // import 'reset-css';
 
 
-import Vue from 'vue';
 import 'framework7';
+import 'framework7-icons/css/framework7-icons.css';
+
+import Vue from 'vue';
 
 // Import F7 Vue Plugin
 import Framework7Vue from 'framework7-vue';
+
 
 // Import F7 iOS Theme Styles
 // import 'framework7/dist/css/framework7.ios.min.css';
