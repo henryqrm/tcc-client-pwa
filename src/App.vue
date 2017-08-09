@@ -49,42 +49,45 @@
                 <f7-link icon="icon-bars" open-panel="right"></f7-link>
               </f7-nav-right>
             </f7-navbar>
+            <PurchaseOrders></PurchaseOrders>
             <!-- Page Content -->
-            <SelectTable></SelectTable>
-
+            <!-- <SelectTable></SelectTable> -->
+  
             <!-- <f7-fab-speed-dial>
-              <f7-fab-actions>
-                <f7-fab-action color="pink" @click="onActionClick">A</f7-fab-action>
-                <f7-fab-action color="orange" @click="onActionClick">B</f7-fab-action>
-                <f7-fab-action color="green" @click="onActionClick">C</f7-fab-action>
-              </f7-fab-actions>
-              <f7-fab>
-                <f7-icon icon="icon-plus"></f7-icon>
-                <f7-icon icon="icon-close"></f7-icon>
-              </f7-fab>
-            </f7-fab-speed-dial> -->
+                  <f7-fab-actions>
+                    <f7-fab-action color="pink" @click="onActionClick">A</f7-fab-action>
+                    <f7-fab-action color="orange" @click="onActionClick">B</f7-fab-action>
+                    <f7-fab-action color="green" @click="onActionClick">C</f7-fab-action>
+                  </f7-fab-actions>
+                  <f7-fab>
+                    <f7-icon icon="icon-plus"></f7-icon>
+                    <f7-icon icon="icon-close"></f7-icon>
+                  </f7-fab>
+                </f7-fab-speed-dial> -->
           </f7-page>
         </f7-pages>
       </f7-view>
     </f7-views>
-    <Login></Login>
+    <login></login>
     <Popup></Popup>
   </div>
 </template>
 
 <script>
-import Home from '@/pages/Home';
-import Login from '@/pages/Login';
 import Popup from '@/components/Popup';
+import PurchaseOrders from '@/pages/purchase-orders';
+import home from '@/pages/home';
+import login from '@/pages/login';
 import SelectTable from '@/pages/select-table';
 
 export default {
   name: 'app',
   components: {
-    Home,
-    Login,
+    home,
+    login,
     Popup,
     SelectTable,
+    PurchaseOrders,
   },
 };
 </script>
