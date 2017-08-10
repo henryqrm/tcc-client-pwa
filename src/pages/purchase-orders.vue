@@ -1,18 +1,14 @@
 <template>
   <f7-page with-subnavbar no-page-content>
-    <f7-navbar back-link="Back" title="Tabs Swipeable" sliding>
-      <f7-subnavbar sliding :slot="$theme.material ? 'after-inner' : 'default'">
-        <f7-buttons>
-          <f7-button tab-link="#tab1" active>Entradas</f7-button>
-          <f7-button tab-link="#tab2">Prato principal</f7-button>
-          <f7-button tab-link="#tab3">Bebidas</f7-button>
-          <f7-button tab-link="#tab4">Tab 4</f7-button>
-          <f7-button tab-link="#tab5">Tab 5</f7-button>
-          <f7-button tab-link="#tab6">Tab 6</f7-button>
-        </f7-buttons>
-      </f7-subnavbar>
-    </f7-navbar>
-    <f7-tabs swipeable animated>
+    <f7-toolbar tabbar scrollable>
+      <f7-link tab-link="#tab1" active>Entradas</f7-link>
+      <f7-link tab-link="#tab2">Prato principal</f7-link>
+      <f7-link tab-link="#tab3">Bebidas</f7-link>
+      <f7-link tab-link="#tab4">Tab 4</f7-link>
+      <f7-link tab-link="#tab5">Tab 5</f7-link>
+      <f7-link tab-link="#tab6">Tab 6</f7-link>
+    </f7-toolbar>
+    <f7-tabs swipeable>
       <f7-page-content id="tab1" tab active>
         <f7-block>
           <p>Tab 1</p>
@@ -54,6 +50,9 @@ import cardProduct from '@/components/card-product';
 export default {
   components: {
     cardProduct,
+  },
+  created() {
+    console.log(this.$CONSTANT.API); // eslint-disable-line no-console
   },
 };
 </script>

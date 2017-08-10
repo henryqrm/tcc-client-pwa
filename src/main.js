@@ -11,17 +11,19 @@ import Framework7Vue from 'framework7-vue';
 
 
 // Import F7 iOS Theme Styles
-import 'framework7/dist/css/framework7.ios.min.css';
-import 'framework7/dist/css/framework7.ios.colors.min.css';
+// import 'framework7/dist/css/framework7.ios.min.css';
+// import 'framework7/dist/css/framework7.ios.colors.min.css';
 //  OR for Material Theme:
-// import 'framework7/dist/css/framework7.material.min.css';
-// import 'framework7/dist/css/framework7.material.colors.min.css';
+import 'framework7/dist/css/framework7.material.min.css';
+import 'framework7/dist/css/framework7.material.colors.min.css';
 
 import vueLogger from 'vue-logger';
 
 import Routes from './router';
 import App from './App';
+import CONSTANTS from './constants';
 
+Vue.use(CONSTANTS);
 Vue.use(Framework7Vue);
 
 Vue.use(vueLogger, {
