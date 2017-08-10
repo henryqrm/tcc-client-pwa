@@ -3,9 +3,9 @@
     <f7-navbar back-link="Back" title="Tabs Swipeable" sliding>
       <f7-subnavbar sliding :slot="$theme.material ? 'after-inner' : 'default'">
         <f7-buttons>
-          <f7-button tab-link="#tab1" active>Tab 1</f7-button>
-          <f7-button tab-link="#tab2">Tab 2</f7-button>
-          <f7-button tab-link="#tab3">Tab 3</f7-button>
+          <f7-button tab-link="#tab1" active>Entradas</f7-button>
+          <f7-button tab-link="#tab2">Prato principal</f7-button>
+          <f7-button tab-link="#tab3">Bebidas</f7-button>
           <f7-button tab-link="#tab4">Tab 4</f7-button>
           <f7-button tab-link="#tab5">Tab 5</f7-button>
           <f7-button tab-link="#tab6">Tab 6</f7-button>

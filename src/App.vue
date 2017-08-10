@@ -55,7 +55,7 @@
       </f7-view>
     </f7-views>
     <login></login>
-    <Popup></Popup>
+    <!-- <Popup></Popup> -->
   </div>
 </template>
 

@@ -21,17 +21,23 @@
       <div>
         <i class="f7-icons size-20 color-yellow">star_fill</i>{{rated}}
       </div>
-      <f7-button>Informações</f7-button>
+      <f7-button open-popup="#popup">Informações</f7-button>
       <div>
         <f7-chip text="0" bg="green" color="white"></f7-chip>
       </div>
     </div>
+    <Popup></Popup>
   </div>
 </template>
 <script>
+import Popup from '@/components/Popup';
+
 export default {
   name: 'card-product',
   props: ['item'],
+  components: {
+    Popup,
+  },
   created() {
     this.rated = 4.4;
     this.value = 2;
