@@ -10,16 +10,16 @@
       <div class="card-content-inner">
         <div>
           <p class="row color-gray">
-            <span class="col-30">2 unidades</span>
-            <span class="col-30 text-right">R$ 39,99</span>
+            <span class="col-30">{{unit}} unidades</span>
+            <span class="col-30 text-right">R$ {{price}}</span>
           </p>
         </div>
-        <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.</p>
+        <p>{{description}}</p>
       </div>
     </div>
     <div class="card-footer">
       <div>
-        <i class="f7-icons size-20 color-yellow">star_fill</i>4,5
+        <i class="f7-icons size-20 color-yellow">star_fill</i>{{rated}}
       </div>
       <f7-button>Informações</f7-button>
       <div>
@@ -31,10 +31,12 @@
 <script>
 export default {
   name: 'card-product',
-  data() {
-    return {
-      description: '',
-    };
+  props: ['item'],
+  created() {
+    this.rated = 4.4;
+    this.value = 2;
+    this.amount = 2;
+    this.description = 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.';
   },
 };
 </script>

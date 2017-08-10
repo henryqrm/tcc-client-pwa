@@ -1,11 +1,51 @@
 <template>
-  <f7-page>
-    <f7-block-title>
-      Sub categoria
-    </f7-block-title>
-    <f7-block>
-      <card-product></card-product>  
-    </f7-block>
+  <f7-page with-subnavbar no-page-content>
+    <f7-navbar back-link="Back" title="Tabs Swipeable" sliding>
+      <f7-subnavbar sliding :slot="$theme.material ? 'after-inner' : 'default'">
+        <f7-buttons>
+          <f7-button tab-link="#tab1" active>Tab 1</f7-button>
+          <f7-button tab-link="#tab2">Tab 2</f7-button>
+          <f7-button tab-link="#tab3">Tab 3</f7-button>
+          <f7-button tab-link="#tab4">Tab 4</f7-button>
+          <f7-button tab-link="#tab5">Tab 5</f7-button>
+          <f7-button tab-link="#tab6">Tab 6</f7-button>
+        </f7-buttons>
+      </f7-subnavbar>
+    </f7-navbar>
+    <f7-tabs swipeable animated>
+      <f7-page-content id="tab1" tab active>
+        <f7-block>
+          <p>Tab 1</p>
+          <cardProduct></cardProduct>
+          <cardProduct></cardProduct>
+        </f7-block>
+      </f7-page-content>
+      <f7-page-content id="tab2" tab>
+        <f7-block>
+          <p>Tab 2</p>
+        </f7-block>
+      </f7-page-content>
+      <f7-page-content id="tab3" tab>
+        <f7-block>
+          <p>Tab 3</p>
+        </f7-block>
+      </f7-page-content>
+      <f7-page-content id="tab4" tab>
+        <f7-block>
+          <p>Tab 4</p>
+        </f7-block>
+      </f7-page-content>
+      <f7-page-content id="tab5" tab>
+        <f7-block>
+          <p>Tab 5</p>
+        </f7-block>
+      </f7-page-content>
+      <f7-page-content id="tab6" tab>
+        <f7-block>
+          <p>Tab 6</p>
+        </f7-block>
+      </f7-page-content>
+    </f7-tabs>
   </f7-page>
 </template>
 <<script>
@@ -18,4 +58,5 @@ export default {
 };
 </script>
 <style scoped>
+
 </style>
