@@ -8,12 +8,12 @@
       <f7-link tab-link="#tab5">Tab 5</f7-link>
       <f7-link tab-link="#tab6">Tab 6</f7-link>
     </f7-toolbar>
-    <f7-tabs swipeable>
+    <!-- swipeable -->
+    <f7-tabs>
       <f7-page-content id="tab1" tab active>
         <f7-block>
-          <p>Tab 1</p>
-          <cardProduct></cardProduct>
-          <cardProduct></cardProduct>
+          <cardProduct :item="product"></cardProduct>
+          <cardProduct :item="product"></cardProduct>
         </f7-block>
       </f7-page-content>
       <f7-page-content id="tab2" tab>
@@ -51,8 +51,15 @@ export default {
   components: {
     cardProduct,
   },
-  created() {
-    console.log(this.$CONSTANT.API); // eslint-disable-line no-console
+  data() {
+    return {
+      product: {
+        rated: 4.4,
+        value: 2,
+        amount: 2,
+        description: 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.',
+      },
+    };
   },
 };
 </script>

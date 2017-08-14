@@ -35,6 +35,8 @@ Vue.use(vueLogger, {
 
 Vue.config.productionTip = false;
 
+// Vue.http.options.root = 'http://localhost:9000';
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

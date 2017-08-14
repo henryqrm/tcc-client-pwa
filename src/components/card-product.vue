@@ -10,18 +10,18 @@
       <div class="card-content-inner">
         <div>
           <p class="row color-gray">
-            <span class="col-30">{{unit}} unidades</span>
-            <span class="col-30 text-right">R$ {{price}}</span>
+            <span class="col-30">{{ item.amount }} unidades</span>
+            <span class="col-30 text-right">R$ {{ item.amount }}</span>
           </p>
         </div>
-        <p>{{description}}</p>
+        <p>{{ item.description }}</p>
       </div>
     </div>
     <div class="card-footer">
       <div>
-        <i class="f7-icons size-20 color-yellow">star_fill</i>{{rated}}
+        <i class="f7-icons size-20 color-yellow">star_fill</i>{{ item.rated }}
       </div>
-      <f7-button open-popup="#popup">Informações</f7-button>
+      <f7-button>Informações</f7-button>
       <div>
         <f7-chip text="0" bg="green" color="white"></f7-chip>
       </div>
@@ -38,11 +38,10 @@ export default {
   components: {
     Popup,
   },
-  created() {
-    this.rated = 4.4;
-    this.value = 2;
-    this.amount = 2;
-    this.description = 'Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.';
+  mounted() {
+    setTimeout(() => {
+      console.log(this.$f7Router.framework7.views.main.router.load('/product/'));
+    }, 500);
   },
 };
 </script>

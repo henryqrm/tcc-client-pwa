@@ -49,13 +49,14 @@
                 <f7-link icon="icon-bars" open-panel="right"></f7-link>
               </f7-nav-right>
             </f7-navbar>
-            <PurchaseOrders></PurchaseOrders>
+              <PurchaseOrders></PurchaseOrders>  
+            <!-- <f7-button href="/product/">Informações</f7-button> -->
           </f7-page>
         </f7-pages>
       </f7-view>
     </f7-views>
     <login></login>
-    <!-- <Popup></Popup> -->
+    <Popup></Popup>
   </div>
 </template>
 
@@ -89,4 +90,3 @@ export default {
   margin-right: 6px;
 }
 </style>
-

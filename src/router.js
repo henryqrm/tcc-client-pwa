@@ -1,6 +1,7 @@
 import About from '@/pages/About';
 import Form from '@/pages/Form';
 import SelectTable from '@/pages/select-table';
+import Product from '@/pages/product';
 
 import PurchaseOrder from '@/pages/purchase-orders';
 
@@ -20,5 +21,9 @@ export default [
   {
     path: '/form/',
     component: Form,
+  },
+  {
+    path: '/product/',
+    component: Product,
   },
 ];
