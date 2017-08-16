@@ -2,7 +2,7 @@
   <div class="card card-header-pic">
     <div :style="{backgroundImage: `url('${item.image}')`}" valign="bottom" class="card-header color-white no-border">
       {{item.name}}
-      <f7-fab class="btn-add-product">
+      <f7-fab class="btn-add-product" @click="addOrder(item)">
         <f7-icon icon="icon-plus"></f7-icon>
       </f7-fab>
     </div>
@@ -38,6 +38,14 @@ export default {
     return {
       images: String,
     };
+  },
+  methods: {
+    addOrder(item) {
+      this.$f7Router.framework7.addNotification({
+        message: `Pedido adicionado: ${item.name}`,
+        hold: 3000,
+      });
+    },
   },
 };
 </script>

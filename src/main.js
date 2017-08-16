@@ -17,21 +17,12 @@ import Framework7Vue from 'framework7-vue';
 import 'framework7/dist/css/framework7.material.min.css';
 import 'framework7/dist/css/framework7.material.colors.min.css';
 
-import vueLogger from 'vue-logger';
-
 import Routes from './router';
 import App from './App';
 import CONSTANTS from './constants';
 
 Vue.use(CONSTANTS);
 Vue.use(Framework7Vue);
-
-Vue.use(vueLogger, {
-  prefix: new Date(),
-  dev: true,
-  shortname: true,
-  levels: ['log', 'warn', 'debug', 'error', 'dir'],
-});
 
 Vue.config.productionTip = false;
 
