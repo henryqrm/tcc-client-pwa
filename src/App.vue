@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-  
     <!-- Statusbar -->
     <f7-statusbar></f7-statusbar>
     <!-- Right Panel -->
@@ -33,7 +32,7 @@
       <f7-view id="main-view" navbar-through :dynamic-navbar="true" main>
         <!-- iOS Theme Navbar -->
         <f7-navbar v-if="$theme.ios">
-          <f7-nav-center sliding>Cardápio</f7-nav-center>
+          <f7-nav-center sliding>Cardápio - Mesa 1</f7-nav-center>
           <f7-nav-right>
             <span>Menu</span>
             <f7-link icon="icon-bars" open-panel="right"></f7-link>
@@ -43,7 +42,7 @@
           <f7-page with-subnavbar no-page-content>
             <!-- Material Theme Navbar -->
             <f7-navbar v-if="$theme.material">
-              <f7-nav-center sliding>Cardápio</f7-nav-center>
+              <f7-nav-center sliding>Cardápio - Mesa 1</f7-nav-center>
               <f7-nav-right>
                 <span>Menu</span>
                 <f7-link icon="icon-bars" open-panel="right"></f7-link>
@@ -62,12 +61,16 @@
                 </section>
               </f7-page-content>
             </f7-tabs>
+            <f7-fab color="pink" @click="command">
+              <i class="f7-icons">document_text_fill</i>
+            </f7-fab>
           </f7-page>
         </f7-pages>
       </f7-view>
     </f7-views>
     <login></login>
     <Popup></Popup>
+    <SelectTable></SelectTable>
   </div>
 </template>
 
@@ -77,7 +80,7 @@ import home from '@/pages/home';
 import login from '@/pages/login';
 import SelectTable from '@/pages/select-table';
 import cardProduct from '@/components/card-product';
-import { MOCK } from '@/providers/product';
+import { MOCK } from '@/store/product';
 
 export default {
   name: 'app',
@@ -91,15 +94,31 @@ export default {
   data() {
     return {
       categories: MOCK,
+      f7: {},
     };
   },
-  mounted() {
-    setTimeout(() => {
-      this.$f7Router.framework7.addNotification({
+  methods: {
+    command() {
+      console.log(this.f7);
+      // this.f7.mainView.router.load({
+      //   url: '/command',
+      //   pushState: true,
+      //   animatePages: true,
+      // });
+    },
+    onF7Init: (f7) => {
+      /* eslint-disable no-console */
+      this.f7 = f7;
+      f7.addNotification({
         message: 'Aplicativo carregado',
         hold: 3000,
       });
-    }, 100);
+      f7.mainView.router.load({
+        url: '/select-table',
+        pushState: true,
+        animatePages: true,
+      });
+    },
   },
 };
 </script>

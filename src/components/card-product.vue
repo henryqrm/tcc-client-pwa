@@ -2,9 +2,12 @@
   <div class="card card-header-pic">
     <div :style="{backgroundImage: `url('${item.image}')`}" valign="bottom" class="card-header color-white no-border">
       {{item.name}}
-      <f7-fab class="btn-add-product" @click="addOrder(item)">
+      <f7-button raised color="white" bg="green" @click="addProduct(item)">
         <f7-icon icon="icon-plus"></f7-icon>
-      </f7-fab>
+      </f7-button>
+      <!-- <f7-fab class="btn-add-product" @click="addProduct(item)">
+            <f7-icon icon="icon-plus"></f7-icon>
+          </f7-fab> -->
     </div>
     <div class="card-content">
       <div class="card-content-inner">
@@ -17,14 +20,13 @@
         <p>{{ item.description }}</p>
       </div>
     </div>
-    <div class="card-footer">
-      <div>
+    <div class="card-footer row">
+      <div class="col-20">
         <i class="f7-icons size-20 color-yellow">star_fill</i>{{ item.rated }}
       </div>
-      <f7-button>-</f7-button>
-      <f7-button>+</f7-button>
-      <div>
-        <f7-chip text="0" bg="green" color="white"></f7-chip>
+      <f7-button class="col-40" color="red" @click="removeProduct(item)" v-if="command.numberOfProduct !== 0">remover</f7-button>
+      <div class="col-15">
+        <f7-chip v-if="command.numberOfProduct !== 0" :text="command.numberOfProduct" bg="green" color="white"></f7-chip>
       </div>
     </div>
   </div>
@@ -36,13 +38,25 @@ export default {
   props: ['item'],
   data() {
     return {
-      images: String,
+      command: {
+        numberOfProduct: 0,
+      },
     };
   },
+  mounted() {
+  },
   methods: {
-    addOrder(item) {
+    addProduct(item) {
+      this.command.numberOfProduct += 1;
       this.$f7Router.framework7.addNotification({
         message: `Pedido adicionado: ${item.name}`,
+        hold: 3000,
+      });
+    },
+    removeProduct(item) {
+      this.command.numberOfProduct -= 1;
+      this.$f7Router.framework7.addNotification({
+        message: `Pedido removido: ${item.name}`,
         hold: 3000,
       });
     },
