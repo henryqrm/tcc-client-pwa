@@ -49,8 +49,9 @@
                 <f7-link icon="icon-bars" open-panel="right"></f7-link>
               </f7-nav-right>
             </f7-navbar>
-              <PurchaseOrders></PurchaseOrders>  
-            <!-- <f7-button href="/product/">Informações</f7-button> -->
+                <PurchaseOrders></PurchaseOrders>    
+             <!-- <f7-button href="/product/">Informações</f7-button> -->
+              <!-- <Product></Product>  -->
           </f7-page>
         </f7-pages>
       </f7-view>

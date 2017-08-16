@@ -1,7 +1,7 @@
 <template>
   <div class="card card-header-pic">
-    <div style="background-image:url('./static/img/background.jpg')" valign="bottom" class="card-header color-white no-border">
-      Petisco
+    <div :style="{backgroundImage: `url('${item.image}')`}" valign="bottom" class="card-header color-white no-border">
+      {{item.name}}
       <f7-fab class="btn-add-product">
         <f7-icon icon="icon-plus"></f7-icon>
       </f7-fab>
@@ -10,8 +10,8 @@
       <div class="card-content-inner">
         <div>
           <p class="row color-gray">
-            <span class="col-30">{{ item.amount }} unidades</span>
-            <span class="col-30 text-right">R$ {{ item.amount }}</span>
+            <span class="col-40">{{ item.amount }} {{item.amountUnit}}</span>
+            <span class="col-30 text-right">R$ {{ item.value }}</span>
           </p>
         </div>
         <p>{{ item.description }}</p>
@@ -21,31 +21,31 @@
       <div>
         <i class="f7-icons size-20 color-yellow">star_fill</i>{{ item.rated }}
       </div>
-      <f7-button>Informações</f7-button>
+      <f7-button>-</f7-button>
+      <f7-button>+</f7-button>
       <div>
         <f7-chip text="0" bg="green" color="white"></f7-chip>
       </div>
     </div>
-    <Popup></Popup>
   </div>
 </template>
 <script>
-import Popup from '@/components/Popup';
 
 export default {
   name: 'card-product',
   props: ['item'],
-  components: {
-    Popup,
-  },
-  mounted() {
-    setTimeout(() => {
-      console.log(this.$f7Router.framework7.views.main.router.load('/product/'));
-    }, 500);
+  data() {
+    return {
+      images: String,
+    };
   },
 };
 </script>
 <style scoped>
+.card-header-swaper {
+  height: 40vw;
+}
+
 .card-header-pic .card-header {
   height: 40vw;
   background-size: cover;
