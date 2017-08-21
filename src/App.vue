@@ -26,7 +26,7 @@
         </f7-pages>
       </f7-view>
     </f7-panel>
-  
+
     <!-- Main Views -->
     <f7-views>
       <f7-view id="main-view" navbar-through :dynamic-navbar="true" main>
@@ -80,7 +80,6 @@ import home from '@/pages/home';
 import login from '@/pages/login';
 import SelectTable from '@/pages/select-table';
 import cardProduct from '@/components/card-product';
-import { MOCK } from '@/store/product';
 
 export default {
   name: 'app',
@@ -93,19 +92,12 @@ export default {
   },
   data() {
     return {
-      categories: MOCK,
+      categories: [],
       f7: {},
     };
   },
   methods: {
-    command() {
-      console.log(this.f7);
-      // this.f7.mainView.router.load({
-      //   url: '/command',
-      //   pushState: true,
-      //   animatePages: true,
-      // });
-    },
+    command() { },
     onF7Init: (f7) => {
       /* eslint-disable no-console */
       this.f7 = f7;

@@ -4,6 +4,7 @@ export default [
     description: '',
     tables: [
       {
+        id: 1,
         name: 'Mesa 1',
         occupations: {
           total: 10,
@@ -13,6 +14,7 @@ export default [
         isOccupied: false,
       },
       {
+        id: 1,
         name: 'Mesa 1',
         occupations: {
           total: 10,
@@ -22,6 +24,7 @@ export default [
         isOccupied: true,
       },
       {
+        id: 1,
         name: 'Mesa 1',
         occupations: {
           total: 10,
@@ -31,6 +34,7 @@ export default [
         isOccupied: true,
       },
       {
+        id: 1,
         name: 'Mesa 1',
         occupations: {
           total: 10,
@@ -46,6 +50,7 @@ export default [
     description: '',
     tables: [
       {
+        id: 1,
         name: 'Mesa 1',
         occupations: {
           total: 10,
@@ -55,6 +60,7 @@ export default [
         isOccupied: false,
       },
       {
+        id: 1,
         name: 'Mesa 1',
         occupations: {
           total: 10,
@@ -64,6 +70,7 @@ export default [
         isOccupied: true,
       },
       {
+        id: 1,
         name: 'Mesa 1',
         occupations: {
           total: 10,
@@ -73,6 +80,7 @@ export default [
         isOccupied: true,
       },
       {
+        id: 1,
         name: 'Mesa 1',
         occupations: {
           total: 10,
