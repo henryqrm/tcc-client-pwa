@@ -26,8 +26,6 @@
               <f7-swiper-slide>Slide 2</f7-swiper-slide>
               <f7-swiper-slide>Slide 3</f7-swiper-slide>
             </f7-swiper>
-  
-            <!-- <PurchaseOrders></PurchaseOrders> -->
           </f7-page>
         </f7-pages>
       </f7-view>

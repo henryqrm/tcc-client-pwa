@@ -4,27 +4,15 @@
   </f7-page>
 </template>
 <script>
-import COMMAND from '@/store/command';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  data() {
-    return {
-      command: COMMAND,
-    };
-  },
   methods: {
     onF7Init(f7) {
       this.f7 = f7;
     },
-    confirm() {
-
-    },
-    add() {
-
-    },
-    remove() {
-
-    },
+    ...mapGetters([]),
+    ...mapActions([]),
   },
 };
 </script>

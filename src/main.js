@@ -19,9 +19,8 @@ import 'framework7/dist/css/framework7.material.colors.min.css';
 
 import Routes from './router';
 import App from './App';
-import CONSTANTS from './constants';
+import store from './store';
 
-Vue.use(CONSTANTS);
 Vue.use(Framework7Vue);
 
 Vue.config.productionTip = false;
@@ -30,6 +29,7 @@ Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
+  store,
   el: '#app',
   template: '<App/>',
   framework7: {

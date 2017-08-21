@@ -1,5 +1,5 @@
-import About from '@/pages/About';
-import Form from '@/pages/Form';
+import About from '@/pages/about';
+import CredCard from '@/pages/cred-card';
 import SelectTable from '@/pages/select-table';
 import Command from '@/pages/command';
 
@@ -13,8 +13,8 @@ export default [
     component: SelectTable,
   },
   {
-    path: '/form/',
-    component: Form,
+    path: '/cred-card/',
+    component: CredCard,
   },
   {
     path: '/command',

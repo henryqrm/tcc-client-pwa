@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import Popup from '@/components/Popup';
+import Popup from '@/components/popup';
 import home from '@/pages/home';
 import login from '@/pages/login';
 import SelectTable from '@/pages/select-table';
