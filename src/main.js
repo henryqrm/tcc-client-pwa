@@ -5,6 +5,7 @@ import 'framework7';
 import 'framework7-icons/css/framework7-icons.css';
 
 import Vue from 'vue';
+// import VueSocketio from 'vue-socket.io';
 
 // Import F7 Vue Plugin
 import Framework7Vue from 'framework7-vue';
@@ -20,6 +21,8 @@ import 'framework7/dist/css/framework7.material.colors.min.css';
 import Routes from './router';
 import App from './App';
 import store from './store';
+
+// Vue.use(VueSocketio, socketio('URL+PORT'), store);
 
 Vue.use(Framework7Vue);
 

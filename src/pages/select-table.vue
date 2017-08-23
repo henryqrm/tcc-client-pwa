@@ -23,12 +23,12 @@ export default {
     };
   },
   methods: {
-    ...mapActions('Command', ['selectTable']),
+    ...mapActions('Command', ['socket_openCommand']),
     onF7Init(f7) {
       this.f7 = f7;
     },
     select(table) {
-      this.selectTable(table.id)
+      this.socket_openCommand(table)
         .then(() => {
           this.f7.mainView.router.back();
         });
