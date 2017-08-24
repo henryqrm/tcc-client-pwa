@@ -49,10 +49,10 @@
               </f7-nav-right>
             </f7-navbar>
             <f7-toolbar tabbar scrollable>
-              <f7-link :tab-link="category.name" v-for="category in categories" :key="category.name">{{ category.name }}</f7-link>
+              <f7-link :tab-link="category.name" v-for="category in getProducts" :key="category.name">{{ category.name }}</f7-link>
             </f7-toolbar>
             <f7-tabs swipeable>
-              <f7-page-content :id="category.name" tab v-for="category in categories" :key="category.name">
+              <f7-page-content :id="category.name" tab v-for="category in getProducts" :key="category.name">
                 <section v-for="product in category.products" :key="product.name">
                   <f7-block-title>{{ product.name }}</f7-block-title>
                   <f7-block>
@@ -80,6 +80,7 @@ import home from '@/pages/home';
 import login from '@/pages/login';
 import SelectTable from '@/pages/select-table';
 import cardProduct from '@/components/card-product';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'app',
@@ -96,8 +97,11 @@ export default {
       f7: {},
     };
   },
+  computed: {
+    ...mapGetters('Product', ['getProducts']),
+  },
   methods: {
-    command() { },
+    command: () => { },
     onF7Init: (f7) => {
       /* eslint-disable no-console */
       this.f7 = f7;

@@ -1,3 +1,5 @@
+import { merge } from 'lodash';
+
 import Command from './model';
 
 export const SOCKET_OPEN_COMMAND = 'SOCKET_OPEN_COMMAND';
@@ -11,21 +13,13 @@ export default {
   [SOCKET_OPEN_COMMAND](state, table) {
     /* eslint-disable */
     const newCommand = new Command(table);
-    state.push(newCommand);
+    merge(state, newCommand);
   },
-  [SOCKET_CLOSE_COMMAND](state, ) {
-    state[index]
+  [SOCKET_CLOSE_COMMAND](state, ) { },
+  [SOCKET_PAYMENT_COMMAND](state, ) { },
+  [SOCKET_REQUEST_WAITER](state, ) { },
+  [SOCKET_ADD_PRODUCT](state, product) {
+    state.products.push(product);
   },
-  [SOCKET_PAYMENT_COMMAND](state, ) {
-    state[index]
-  },
-  [SOCKET_REQUEST_WAITER](state, ) {
-    state[index]
-  },
-  [SOCKET_ADD_PRODUCT](state, ) {
-    state[index]
-  },
-  [SOCKET_REMOVE_PRODUCT](state, ) {
-    state[index]
-  },
+  [SOCKET_REMOVE_PRODUCT](state, ) { },
 };

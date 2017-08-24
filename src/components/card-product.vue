@@ -6,8 +6,8 @@
         <f7-icon icon="icon-plus"></f7-icon>
       </f7-button>
       <!-- <f7-fab class="btn-add-product" @click="addProduct(item)">
-            <f7-icon icon="icon-plus"></f7-icon>
-          </f7-fab> -->
+                            <f7-icon icon="icon-plus"></f7-icon>
+                          </f7-fab> -->
     </div>
     <div class="card-content">
       <div class="card-content-inner">
@@ -32,6 +32,7 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex';
 
 export default {
   name: 'card-product',
@@ -43,22 +44,25 @@ export default {
       },
     };
   },
-  mounted() {
-  },
   methods: {
+    ...mapActions('Command', ['socket_addProduct', 'socket_removeProduct']),
     addProduct(item) {
       this.command.numberOfProduct += 1;
       this.$f7Router.framework7.addNotification({
         message: `Pedido adicionado: ${item.name}`,
         hold: 3000,
       });
+      this.socket_addProduct(item);
     },
     removeProduct(item) {
-      this.command.numberOfProduct -= 1;
-      this.$f7Router.framework7.addNotification({
-        message: `Pedido removido: ${item.name}`,
-        hold: 3000,
-      });
+      this.socket_removeProduct(item)
+        .then(() => {
+          this.command.numberOfProduct -= 1;
+          this.$f7Router.framework7.addNotification({
+            message: `Pedido removido: ${item.name}`,
+            hold: 3000,
+          });
+        });
     },
   },
 };
