@@ -5,6 +5,7 @@ import 'framework7';
 import 'framework7-icons/css/framework7-icons.css';
 
 import Vue from 'vue';
+import Resource from 'vue-resource';
 // import VueSocketio from 'vue-socket.io';
 
 // Import F7 Vue Plugin
@@ -25,10 +26,11 @@ import store from './store';
 // Vue.use(VueSocketio, socketio('URL+PORT'), store);
 
 Vue.use(Framework7Vue);
+Vue.use(Resource);
 
 Vue.config.productionTip = false;
 
-// Vue.http.options.root = 'http://localhost:9000';
+Vue.http.options.root = 'http://localhost:9000/api/';
 
 /* eslint-disable no-new */
 new Vue({

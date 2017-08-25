@@ -13,14 +13,20 @@
   </f7-page>
 </template>
 <script>
-import LOCALS from '@/store/table';
 import { mapActions } from 'vuex';
+import LocalService from '@/services/local';
 
 export default {
   data() {
     return {
-      locals: LOCALS,
+      locals: {},
     };
+  },
+  created() {
+    const localService = new LocalService(this.$resource);
+    localService
+      .index()
+      .then((locals) => { this.locals = locals; });
   },
   methods: {
     ...mapActions('Command', ['socket_openCommand']),
