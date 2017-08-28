@@ -23,10 +23,12 @@ export default {
     };
   },
   created() {
-    const localService = new LocalService(this.$resource);
-    localService
+    this.localService = new LocalService(this.$resource);
+    this.localService
       .index()
-      .then((locals) => { this.locals = locals; });
+      .then((locals) => {
+        this.locals = locals;
+      });
   },
   methods: {
     ...mapActions('Command', ['socket_openCommand']),
@@ -37,6 +39,8 @@ export default {
       this.socket_openCommand(table)
         .then(() => {
           this.f7.mainView.router.back();
+          this.localService.getTable(table)
+            .then(newTable => console.log(newTable));
         });
     },
   },
