@@ -15,15 +15,17 @@
 <script>
 import { mapActions } from 'vuex';
 import LocalService from '@/services/local';
+import CommandService from '@/services/command';
 
 export default {
   data() {
     return {
       locals: {},
+      localService: new LocalService(this.$resource),
+      commandService: new CommandService(this.$resource),
     };
   },
   created() {
-    this.localService = new LocalService(this.$resource);
     this.localService
       .index()
       .then((locals) => {
@@ -36,12 +38,24 @@ export default {
       this.f7 = f7;
     },
     select(table) {
-      this.socket_openCommand(table)
-        .then(() => {
-          this.f7.mainView.router.back();
-          this.localService.getTable(table)
-            .then(newTable => console.log(newTable));
+      this.commandService()
+        .create(table)
+        .then(command => {
+          this.socket_openCommand(command)
+            .then(() => {
+              this.f7.prompt(
+                'Qual é seu nome?',
+                'Nome da comanda',
+                (value) => {
+                  this.setName(value);
+                  this.f7.mainView.router.back();
+                },
+              );
+            });
         });
+    },
+    setName(name) {
+      console.log(name);
     },
   },
 };

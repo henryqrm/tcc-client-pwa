@@ -1,6 +1,5 @@
 export default class Command {
   constructor(table) {
-    this.id = '';
     this.name = '';
     this.table = table;
     this.products = [];

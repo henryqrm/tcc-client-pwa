@@ -1,5 +1,3 @@
-import { isUndefined } from 'lodash';
-
 import {
   SOCKET_OPEN_COMMAND,
   SOCKET_CLOSE_COMMAND,
@@ -13,11 +11,8 @@ export default {
   socket_closeCommend(context) {
     context.commit(SOCKET_CLOSE_COMMAND);
   },
-  socket_openCommand(context, idTable) {
-    if (isUndefined(idTable)) {
-      throw new Error('ID inválido');
-    }
-    return context.commit(SOCKET_OPEN_COMMAND, idTable);
+  socket_openCommand(context, command) {
+    return context.commit(SOCKET_OPEN_COMMAND, command);
   },
   socket_paymentCommand(context, typePayment) {
     context.commit(SOCKET_PAYMENT_COMMAND, typePayment);

@@ -1,19 +1,15 @@
 export default class LocalService {
   constructor(resource) {
-    this.resource = resource('local/{_id}');
-    // this.resourceTable = resource('local/table');
+    this.resource = resource;
   }
   index() {
-    return this.resource
+    return this.resource('local/')
       .query()
       .then(res => res.json());
   }
-  getTable(table) {
-    /* eslint-disable */
-    return this.resource
-      .query({
-        _id: table._id,
-      })
+  updateTable(table) {
+    return this.resource('local/table/{id}')
+      .update(table)
       .then(res => res.json());
   }
 }

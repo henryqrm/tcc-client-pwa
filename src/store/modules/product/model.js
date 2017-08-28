@@ -7,7 +7,6 @@ export default class Product {
     this.value = 0;
     this.amount = 0;
     this.amountUnit = '';
-    this.rated = '';
   }
   get total() {
     return this.value * this.amount;
