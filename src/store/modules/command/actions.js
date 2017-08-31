@@ -12,6 +12,9 @@ export default {
     context.commit(SOCKET_CLOSE_COMMAND);
   },
   socket_openCommand(context, command) {
+    if (window) {
+      window.localStorage.setItem('CommandID', command._id);
+    }
     return context.commit(SOCKET_OPEN_COMMAND, command);
   },
   socket_paymentCommand(context, typePayment) {

@@ -14,8 +14,10 @@
 </template>
 <script>
 import { mapActions } from 'vuex';
+import { merge } from 'lodash';
 import LocalService from '@/services/local';
 import CommandService from '@/services/command';
+import Command from '../store/modules/command/model';
 
 export default {
   data() {
@@ -38,24 +40,35 @@ export default {
       this.f7 = f7;
     },
     select(table) {
-      this.commandService()
-        .create(table)
-        .then(command => {
+      this.promptName()
+        .then(name => this.newCommand(name, table));
+    },
+    promptName() {
+      return new Promise((resolve) => {
+        this.f7.prompt(
+          'Qual é seu nome?',
+          'Nome da comanda',
+          (name) => {
+            resolve(name);
+          },
+        );
+      });
+    },
+    newCommand(name, table) {
+      let command = new Command();
+
+      command.setName(name);
+      command.setTable(table);
+
+      this.commandService
+        .openCommand(command)
+        .then((commandDB) => {
+          command = merge(command, commandDB);
           this.socket_openCommand(command)
             .then(() => {
-              this.f7.prompt(
-                'Qual é seu nome?',
-                'Nome da comanda',
-                (value) => {
-                  this.setName(value);
-                  this.f7.mainView.router.back();
-                },
-              );
+              this.f7.mainView.router.back();
             });
         });
-    },
-    setName(name) {
-      console.log(name);
     },
   },
 };

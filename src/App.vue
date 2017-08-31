@@ -49,7 +49,7 @@
               </f7-nav-right>
             </f7-navbar>
             <f7-toolbar tabbar scrollable>
-              <f7-link :tab-link="category.name" v-for="category in getProducts" :key="category.name">{{ category.name }}</f7-link>
+              <f7-link @click="currentTab(category)" :tab-link="category.name" v-for="category in getProducts" :key="category.name">{{ category.name }}</f7-link>
             </f7-toolbar>
             <f7-tabs swipeable>
               <f7-page-content :id="category.name" tab v-for="category in getProducts" :key="category.name">
@@ -61,7 +61,7 @@
                 </section>
               </f7-page-content>
             </f7-tabs>
-            <f7-fab color="pink" @click="command">
+            <f7-fab color="pink">
               <i class="f7-icons">document_text_fill</i>
             </f7-fab>
           </f7-page>
@@ -75,12 +75,13 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 import Popup from '@/components/popup';
 import home from '@/pages/home';
 import login from '@/pages/login';
 import SelectTable from '@/pages/select-table';
 import cardProduct from '@/components/card-product';
-import { mapGetters } from 'vuex';
+import CommandService from './services/command';
 
 export default {
   name: 'app',
@@ -94,26 +95,72 @@ export default {
   data() {
     return {
       categories: [],
-      f7: {},
+      currentTabName: 'Hambúrguer',
+      commandService: new CommandService(this.$resource),
     };
   },
   computed: {
     ...mapGetters('Product', ['getProducts']),
   },
+  mounted() {
+    setTimeout(() => {
+      this.onInit();
+    });
+  },
   methods: {
-    command: () => { },
-    onF7Init: (f7) => {
-      /* eslint-disable no-console */
-      this.f7 = f7;
-      f7.addNotification({
+    ...mapActions('Command', ['socket_openCommand']),
+    currentTab(category) {
+      this.currentTabName = category.name;
+      console.log(this.currentTabName);
+    },
+    onInit() {
+      this.messageLoadApp();
+      const id = this.hasCommandSave();
+      if (id) {
+        this.loadCommand(id);
+      } else {
+        this.loadTables();
+      }
+    },
+    messageLoadApp() {
+      window.f7.addNotification({
         message: 'Aplicativo carregado',
         hold: 3000,
       });
-      f7.mainView.router.load({
+    },
+    loadCommand(id) {
+      this.commandService.getCommand(id)
+        .then((command) => {
+          this.socket_openCommand(command)
+            .then(() => {
+              window.f7.addNotification({
+                message: `Comanda carregada em nome de ${command.name}`,
+                hold: 3000,
+              });
+            });
+        })
+        .catch((err) => {
+          window.localStorage.removeItem('CommandID');
+          window.f7.addNotification({
+            message: err.message,
+            hold: 3000,
+          });
+          this.loadTables();
+        });
+    },
+    loadTables() {
+      window.f7.mainView.router.load({
         url: '/select-table',
         pushState: true,
         animatePages: true,
       });
+    },
+    hasCommandSave() {
+      let id = false;
+      if (window) {
+        id = window.localStorage.getItem('CommandID');
+      }
+      return id;
     },
   },
 };

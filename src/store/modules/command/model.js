@@ -1,10 +1,22 @@
 export default class Command {
-  constructor(table) {
+  constructor() {
     this.name = '';
-    this.table = table;
+    this.table = '';
     this.products = [];
     this.date = new Date();
     this.typePayment = '';
+  }
+  setName(name) {
+    this.name = name;
+  }
+  setTable(table) {
+    this.table = table._id;
+  }
+  setTypePayment(typePayment) {
+    this.typePayment = typePayment;
+  }
+  addProduct(product) {
+    this.products.push(product);
   }
   get totalPaymentAmount() {
     let total = 0;
