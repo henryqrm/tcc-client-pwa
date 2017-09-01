@@ -40,6 +40,10 @@ export default {
       this.f7 = f7;
     },
     select(table) {
+      if (table.isOccupied) {
+        this.$f7.alert('Aguarde a mesa fechar a comanda e ficar disponível.', 'Mesa ocupada');
+        return;
+      }
       this.promptName()
         .then(name => this.newCommand(name, table));
     },
