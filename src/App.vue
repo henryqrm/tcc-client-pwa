@@ -49,10 +49,10 @@
               </f7-nav-right>
             </f7-navbar>
             <f7-toolbar tabbar scrollable>
-              <f7-link @click="currentTab(category)" :tab-link="category.name" v-for="category in getProducts" :key="category.name">{{ category.name }}</f7-link>
+              <f7-link :tab-link="`#${category.name}`" v-for="(category, $index) in getProducts" :key="$index" active>{{ category.name }}</f7-link>
             </f7-toolbar>
             <f7-tabs swipeable>
-              <f7-page-content :id="category.name" tab v-for="category in getProducts" :key="category.name">
+              <f7-page-content :id="`${category.name}`" tab v-for="category in getProducts" :key="category.name">
                 <section v-for="product in category.products" :key="product.name">
                   <f7-block-title>{{ product.name }}</f7-block-title>
                   <f7-block>
@@ -123,7 +123,7 @@ export default {
       }
     },
     messageLoadApp() {
-      window.f7.addNotification({
+      this.$f7.addNotification({
         message: 'Aplicativo carregado',
         hold: 3000,
       });
@@ -133,7 +133,7 @@ export default {
         .then((command) => {
           this.socket_openCommand(command)
             .then(() => {
-              window.f7.addNotification({
+              this.$f7.addNotification({
                 message: `Comanda carregada em nome de ${command.name}`,
                 hold: 3000,
               });
@@ -141,7 +141,7 @@ export default {
         })
         .catch((err) => {
           window.localStorage.removeItem('CommandID');
-          window.f7.addNotification({
+          this.$f7.addNotification({
             message: err.message,
             hold: 3000,
           });
@@ -149,7 +149,7 @@ export default {
         });
     },
     loadTables() {
-      window.f7.mainView.router.load({
+      this.$f7.mainView.router.load({
         url: '/select-table',
         pushState: true,
         animatePages: true,
