@@ -6,8 +6,8 @@
         <f7-icon icon="icon-plus"></f7-icon>
       </f7-button>
       <!-- <f7-fab class="btn-add-product" @click="addProduct(item)">
-                            <f7-icon icon="icon-plus"></f7-icon>
-                          </f7-fab> -->
+                                            <f7-icon icon="icon-plus"></f7-icon>
+                                          </f7-fab> -->
     </div>
     <div class="card-content">
       <div class="card-content-inner">
@@ -24,44 +24,50 @@
       <div class="col-20">
         <i class="f7-icons size-20 color-yellow">star_fill</i>{{ item.rated }}
       </div>
-      <f7-button class="col-40" color="red" @click="removeProduct(item)" v-if="command.numberOfProduct !== 0">remover</f7-button>
+      <f7-button class="col-40" color="red" @click="removeProduct(item)" v-if="countOfProduts !== 0">remover</f7-button>
       <div class="col-15">
-        <f7-chip v-if="command.numberOfProduct !== 0" :text="command.numberOfProduct" bg="green" color="white"></f7-chip>
+        <f7-chip v-if="countOfProduts !== 0" :text="countOfProduts" bg="green" color="white"></f7-chip>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
+import CommandService from './../services/command';
 
 export default {
   name: 'card-product',
   props: ['item'],
+  computed: {
+    ...mapGetters('Command', ['commandId']),
+  },
   data() {
     return {
-      command: {
-        numberOfProduct: 0,
-      },
+      commandService: new CommandService(this.$resource),
+      countOfProduts: 0,
     };
   },
   methods: {
     ...mapActions('Command', ['socket_addProduct', 'socket_removeProduct']),
-    addProduct(item) {
-      this.command.numberOfProduct += 1;
-      this.$f7Router.framework7.addNotification({
-        message: `Pedido adicionado: ${item.name}`,
-        hold: 3000,
-      });
-      this.socket_addProduct(item);
-    },
-    removeProduct(item) {
-      this.socket_removeProduct(item)
+    addProduct(product) {
+      this.commandService.updateCommand(this.commandId, product)
         .then(() => {
-          this.command.numberOfProduct -= 1;
           this.$f7Router.framework7.addNotification({
-            message: `Pedido removido: ${item.name}`,
+            message: `Pedido adicionado: ${product.name}`,
             hold: 3000,
           });
+          this.socket_addProduct(product);
+          this.countOfProduts += 1;
+        });
+    },
+    removeProduct(product) {
+      this.socket_removeProduct(product)
+        .then(() => {
+          this.$f7Router.framework7.addNotification({
+            message: `Pedido removido: ${product.name}`,
+            hold: 3000,
+          });
+          this.countOfProduts -= 1;
         });
     },
   },

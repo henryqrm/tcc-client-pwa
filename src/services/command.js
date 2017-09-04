@@ -18,4 +18,15 @@ export default class CommandProvider {
         throw new Error({ message: 'Erro ao carregar comanda.' });
       });
   }
+  updateCommand(command, product) {
+    return this.resource('command/{id}/product')
+      .update(
+      {
+        id: command._id,
+      },
+      product,
+    ).then(res => res.json(), () => {
+      throw new Error({ message: 'Não foi possivel atualizar comanda.' });
+    });
+  }
 }

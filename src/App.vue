@@ -114,6 +114,7 @@ export default {
       console.log(this.currentTabName);
     },
     onInit() {
+      console.log(this.$store);
       this.messageLoadApp();
       const id = this.hasCommandSave();
       if (id) {
@@ -154,6 +155,12 @@ export default {
         pushState: true,
         animatePages: true,
       });
+    },
+    loadUser() {
+      console.log('loadUser');
+    },
+    loadCredCard() {
+      console.log('loadCredCard');
     },
     hasCommandSave() {
       let id = false;

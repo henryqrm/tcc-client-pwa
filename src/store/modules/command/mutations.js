@@ -14,8 +14,13 @@ export default {
   // [SOCKET_CLOSE_COMMAND](state, ) { },
   // [SOCKET_PAYMENT_COMMAND](state, ) { },
   // [SOCKET_REQUEST_WAITER](state, ) { },
-  // [SOCKET_ADD_PRODUCT](state, product) {
-  //   state.products.push(product);
-  // },
-  // [SOCKET_REMOVE_PRODUCT](state, ) { },
+  [SOCKET_ADD_PRODUCT](state, product) {
+    state.products.push(product);
+  },
+  [SOCKET_REMOVE_PRODUCT](state, product) {
+    const indexOf = state.products.indexOf(product);
+    if (indexOf > -1) {
+      state.splice(indexOf, 1);
+    }
+  },
 };
