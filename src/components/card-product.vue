@@ -1,35 +1,35 @@
 <template>
-  <div class="card card-header-pic">
-    <div :style="{backgroundImage: `url('${item.image}')`}" valign="bottom" class="card-header color-white no-border">
-      {{item.name}}
-      <f7-button raised color="white" bg="green" @click="addProduct(item)">
-        <f7-icon icon="icon-plus"></f7-icon>
-      </f7-button>
-      <!-- <f7-fab class="btn-add-product" @click="addProduct(item)">
-                                            <f7-icon icon="icon-plus"></f7-icon>
-                                          </f7-fab> -->
-    </div>
-    <div class="card-content">
-      <div class="card-content-inner">
-        <div>
-          <p class="row color-gray">
-            <span class="col-40">{{ item.amount }} {{item.amountUnit}}</span>
-            <span class="col-30 text-right">R$ {{ item.value }}</span>
-          </p>
+    <f7-list media-list>
+      <f7-list-item 
+      v-for="product in products"
+      :key="product.name" 
+      v-if="product.isActive"
+      :title="product.name"
+      :text="product.description"
+      :after="'R$ ' + product.value"
+      :link="'/product/12'"
+      link-view="#main-view"
+      link-close-panel
+      >
+        <div slot="media"><img class="media" :src="product.image" :alt="product.name"></div>
+        <div slot="inner">
+          <div class="row">
+            <div class="col-55">
+              <div class="rating">
+                <span :class="{'is-active': rated(index,product.rated)}" v-for="index in [5, 4, 3, 2, 1]" :key="index">☆</span>
+              </div>
+            </div>
+            <div class="col-10">
+              <span class="total">{{product.selected || ''}}</span>
+            </div>
+            <div class="col-35">
+              <a href="#" class="button" @click="addProduct(product)">Adicionar</a>
+            </div>
+          </div>
         </div>
-        <p>{{ item.description }}</p>
-      </div>
-    </div>
-    <div class="card-footer row">
-      <div class="col-20">
-        <i class="f7-icons size-20 color-yellow">star_fill</i>{{ item.rated }}
-      </div>
-      <f7-button class="col-40" color="red" @click="removeProduct(item)" v-if="countOfProduts !== 0">remover</f7-button>
-      <div class="col-15">
-        <f7-chip v-if="countOfProduts !== 0" :text="countOfProduts" bg="green" color="white"></f7-chip>
-      </div>
-    </div>
-  </div>
+       </f7-list-item>
+    </f7-list>
+</f7-list>
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex';
@@ -37,43 +37,82 @@ import CommandService from './../services/command';
 
 export default {
   name: 'card-product',
-  props: ['item'],
+  props: ['products'],
   computed: {
     ...mapGetters('Command', ['commandId']),
   },
   data() {
     return {
       commandService: new CommandService(this.$resource),
-      countOfProduts: 0,
     };
   },
   methods: {
     ...mapActions('Command', ['socket_addProduct', 'socket_removeProduct']),
+    rated(index, rated) {
+      return index === Math.floor(rated);
+    },
     addProduct(product) {
-      this.commandService.updateCommand(this.commandId, product)
-        .then(() => {
-          this.$f7Router.framework7.addNotification({
-            message: `Pedido adicionado: ${product.name}`,
-            hold: 3000,
-          });
-          this.socket_addProduct(product);
-          this.countOfProduts += 1;
-        });
+      this.$f7Router.framework7.addNotification({
+        message: `Pedido adicionado: ${product.name}`,
+        hold: 3000,
+      });
+      // this.socket_addProduct(product);
+      /* eslint-disable no-param-reassign */
+      product.selected += 1;
     },
     removeProduct(product) {
-      this.socket_removeProduct(product)
-        .then(() => {
-          this.$f7Router.framework7.addNotification({
-            message: `Pedido removido: ${product.name}`,
-            hold: 3000,
-          });
-          this.countOfProduts -= 1;
+      this.socket_removeProduct(product).then(() => {
+        this.$f7Router.framework7.addNotification({
+          message: `Pedido removido: ${product.name}`,
+          hold: 3000,
         });
+        this.countOfProduts -= 1;
+      });
     },
   },
 };
 </script>
 <style scoped>
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+
+.total{
+  font-size: 12px;
+  font-weight: 600;
+  color: crimson;
+}
+
+.rating > .is-active:before,
+.rating > .is-active ~ span:before{
+  content: "\2605";
+  position: absolute;
+  color: gold;
+}
+
+.row {
+  padding-top: 8px;
+}
+
+.button {
+  font-size: 12px;
+  line-height: 27px;
+  height: 25px;
+  padding: 0;
+}
+
+.media {
+  height: 13vh;
+  transform: translateY(5px);
+}
+
 .card-header-swaper {
   height: 40vw;
 }
@@ -82,7 +121,7 @@ export default {
   height: 40vw;
   background-size: cover;
   background-position: center;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, .8);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   color: #fff;
   font-size: 1.8em;
 }

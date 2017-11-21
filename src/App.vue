@@ -56,14 +56,11 @@
                 <section v-for="product in category.products" :key="product.name">
                   <f7-block-title>{{ product.name }}</f7-block-title>
                   <f7-block>
-                    <cardProduct v-for="item in product.items" :key="item.name" v-if="item.isActive" :item="item"></cardProduct>
+                    <cardProduct :products="product.items" ></cardProduct>
                   </f7-block>
                 </section>
               </f7-page-content>
             </f7-tabs>
-            <f7-fab color="pink">
-              <i class="f7-icons">document_text_fill</i>
-            </f7-fab>
           </f7-page>
         </f7-pages>
       </f7-view>
@@ -80,6 +77,7 @@ import Popup from '@/components/popup';
 import home from '@/pages/home';
 import login from '@/pages/login';
 import SelectTable from '@/pages/select-table';
+import Product from '@/pages/product';
 import cardProduct from '@/components/card-product';
 import CommandService from './services/command';
 
@@ -91,6 +89,7 @@ export default {
     Popup,
     SelectTable,
     cardProduct,
+    Product,
   },
   data() {
     return {
@@ -114,40 +113,13 @@ export default {
       console.log(this.currentTabName);
     },
     onInit() {
-      console.log(this.$store);
       this.messageLoadApp();
-      const id = this.hasCommandSave();
-      if (id) {
-        this.loadCommand(id);
-      } else {
-        this.loadTables();
-      }
     },
     messageLoadApp() {
       this.$f7.addNotification({
         message: 'Aplicativo carregado',
         hold: 3000,
       });
-    },
-    loadCommand(id) {
-      this.commandService.getCommand(id)
-        .then((command) => {
-          this.socket_openCommand(command)
-            .then(() => {
-              this.$f7.addNotification({
-                message: `Comanda carregada em nome de ${command.name}`,
-                hold: 3000,
-              });
-            });
-        })
-        .catch((err) => {
-          window.localStorage.removeItem('CommandID');
-          this.$f7.addNotification({
-            message: err.message,
-            hold: 3000,
-          });
-          this.loadTables();
-        });
     },
     loadTables() {
       this.$f7.mainView.router.load({
