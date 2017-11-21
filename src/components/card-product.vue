@@ -14,15 +14,15 @@
         <div slot="media"><img class="media" :src="product.image" :alt="product.name"></div>
         <div slot="inner">
           <div class="row">
-            <div class="col-55">
+            <div class="col-50">
               <div class="rating">
                 <span :class="{'is-active': rated(index,product.rated)}" v-for="index in [5, 4, 3, 2, 1]" :key="index">☆</span>
               </div>
             </div>
-            <div class="col-10">
+            <div class="col-5">
               <span class="total">{{product.selected || ''}}</span>
             </div>
-            <div class="col-35">
+            <div class="col-45">
               <a href="#" class="button" @click="addProduct(product)">Adicionar</a>
             </div>
           </div>
@@ -81,7 +81,7 @@ export default {
 .rating > span {
   display: inline-block;
   position: relative;
-  width: 1.1em;
+  width: 0.9em;
 }
 
 .total{

@@ -1,3 +1,9 @@
 div.item-content {
     padding-left: 0 !important;
 }
+.list-block li.media-item .item-link .item-inner, .list-block.media-list .item-link .item-inner{
+    padding-right: 0 !important;
+}
+.list-block .item-media+.item-inner{
+    margin-left: 8px!important;
+}
