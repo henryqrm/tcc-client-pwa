@@ -1,32 +1,32 @@
 import {
-  SOCKET_OPEN_COMMAND,
-  SOCKET_CLOSE_COMMAND,
-  SOCKET_PAYMENT_COMMAND,
-  SOCKET_REQUEST_WAITER,
-  SOCKET_ADD_PRODUCT,
-  SOCKET_REMOVE_PRODUCT,
+  OPEN_COMMAND,
+  CLOSE_COMMAND,
+  PAYMENT_COMMAND,
+  REQUEST_WAITER,
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
 } from './mutations';
 
 export default {
-  socket_closeCommend(context) {
-    context.commit(SOCKET_CLOSE_COMMAND);
+  closeCommend(context) {
+    context.commit(CLOSE_COMMAND);
   },
-  socket_openCommand(context, command) {
+  openCommand(context, command) {
     if (window) {
       window.localStorage.setItem('CommandID', command._id);
     }
-    return context.commit(SOCKET_OPEN_COMMAND, command);
+    return context.commit(OPEN_COMMAND, command);
   },
-  socket_paymentCommand(context, typePayment) {
-    context.commit(SOCKET_PAYMENT_COMMAND, typePayment);
+  paymentCommand(context, typePayment) {
+    context.commit(PAYMENT_COMMAND, typePayment);
   },
-  socket_requestWaiter(context) {
-    context.commit(SOCKET_REQUEST_WAITER);
+  requestWaiter(context) {
+    context.commit(REQUEST_WAITER);
   },
-  socket_addProduct(context, payload) {
-    context.commit(SOCKET_ADD_PRODUCT, payload);
+  addProduct(context, payload) {
+    context.commit(ADD_PRODUCT, payload);
   },
-  socket_removeProduct(context, payload) {
-    context.commit(SOCKET_REMOVE_PRODUCT, payload);
+  removeProduct(context, payload) {
+    context.commit(REMOVE_PRODUCT, payload);
   },
 };

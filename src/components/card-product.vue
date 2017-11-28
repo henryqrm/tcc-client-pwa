@@ -1,5 +1,5 @@
 <template>
-    <f7-list media-list>
+    <f7-list media-list class="products">
       <f7-list-item 
       v-for="product in products"
       :key="product.name" 
@@ -84,17 +84,17 @@ export default {
   width: 0.9em;
 }
 
-.total{
-  font-size: 12px;
-  font-weight: 600;
-  color: crimson;
-}
-
 .rating > .is-active:before,
 .rating > .is-active ~ span:before{
   content: "\2605";
   position: absolute;
   color: gold;
+}
+
+.total{
+  font-size: 12px;
+  font-weight: 600;
+  color: crimson;
 }
 
 .row {

@@ -74,7 +74,7 @@ export default [
         items: [
           {
             name: 'Pepino',
-            id: 0,
+            id: 12,
             isActive: true,
             image: './static/img/background.jpg',
             description: 'pão de forma, pepino japonês, peito de peru e cream cheese',

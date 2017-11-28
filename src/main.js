@@ -39,6 +39,11 @@ new Vue({
   store,
   el: '#app',
   template: '<App/>',
+  pushState: true,
+  ignoreCache: true,
+  pushStateSeparator: '#!/',
+  pushStateOnLoad: true,
+  cache: true,
   framework7: {
     root: '#app',
     material: true,

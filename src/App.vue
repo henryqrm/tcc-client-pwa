@@ -61,13 +61,16 @@
                 </section>
               </f7-page-content>
             </f7-tabs>
+            <f7-toolbar bottom>
+              <f7-button class="button btn-success" big>FAZER PEDIDOS</f7-button>
+            </f7-toolbar>
           </f7-page>
         </f7-pages>
       </f7-view>
     </f7-views>
     <login></login>
     <Popup></Popup>
-    <SelectTable></SelectTable>
+    <!-- <SelectTable></SelectTable> -->
   </div>
 </template>
 
@@ -145,6 +148,10 @@ export default {
 };
 </script>
 <style scoped>
+.btn-success{
+  width: 100%!important;
+  background-color: seagreen;
+}
 #app {
   max-width: 768px;
   margin: 0 auto;
