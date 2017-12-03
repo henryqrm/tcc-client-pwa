@@ -7,7 +7,7 @@
       :title="product.name"
       :text="product.description"
       :after="'R$ ' + product.value"
-      :link="'/product/12'"
+      :link="`/product/${product.id}`"
       link-view="#main-view"
       link-close-panel
       >

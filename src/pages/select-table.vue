@@ -1,38 +1,29 @@
 <template>
   <f7-page>
     <f7-navbar title="Selecione a Mesa" sliding></f7-navbar>
+    <f7-block>
+      <h2>Tênis Ball</h2>
+      <p>A ideia inovadora e o ambiente alegre, aliados a um cardápio delicioso e inédito, onde um bacon crocante e exclusivo reina absoluto, fez do Tênis Ball um grande sucesso na cidade.</p>
+    </f7-block>
     <f7-list media-list v-for="local in locals" :key="local.name">
       <f7-list-item :title="local.name" divider></f7-list-item>
-      <f7-list-item v-for="table in local.tables" :key="table.name" @click="select(table)" :title="table.name" :badge="`${table.occupations.current}/${table.occupations.total}`" :text="table.status" badge-color="blue">
+      <f7-list-item v-for="table in local.tables" :key="table.name" @click="select(table)" :title="table.name" :text="table.status === 'Ocupado' ? table.status : table.status + ' com ' + table.occupations.total + ' lugares'" :class="{'danger': table.status === 'Ocupado', 'success': table.status === 'Livre'}">
         <div slot="media">
-          <f7-chip :bg="table.isOccupied ? 'red' : 'green'">
-          </f7-chip>
+          <img style="width: 48px" src="static/img/table.png">
         </div>
       </f7-list-item>
     </f7-list>
   </f7-page>
 </template>
 <script>
-import { mapActions } from 'vuex';
-import { merge } from 'lodash';
-import LocalService from '@/services/local';
-import CommandService from '@/services/command';
+import { mapActions, mapGetters } from 'vuex';
 import Command from '../store/modules/command/model';
 
 export default {
-  data() {
-    return {
-      locals: {},
-      localService: new LocalService(this.$resource),
-      commandService: new CommandService(this.$resource),
-    };
+  computed: {
+    ...mapGetters('Table', ['locals']),
   },
   created() {
-    this.localService
-      .index()
-      .then((locals) => {
-        this.locals = locals;
-      });
   },
   methods: {
     ...mapActions('Command', ['socket_openCommand']),
@@ -44,14 +35,14 @@ export default {
         this.$f7.alert('Aguarde a mesa fechar a comanda e ficar disponível.', 'Mesa ocupada');
         return;
       }
-      this.promptName()
+      this.promptName(table)
         .then(name => this.newCommand(name, table));
     },
-    promptName() {
+    promptName(table) {
       return new Promise((resolve) => {
         this.f7.prompt(
           'Qual é seu nome?',
-          'Nome da comanda',
+          `Comanda - Mesa ${table.id}`,
           (name) => {
             resolve(name);
           },
@@ -59,21 +50,20 @@ export default {
       });
     },
     newCommand(name, table) {
-      let command = new Command();
+      const command = new Command();
 
       command.setName(name);
       command.setTable(table);
-
-      this.commandService
-        .openCommand(command)
-        .then((commandDB) => {
-          command = merge(command, commandDB);
-          this.socket_openCommand(command)
-            .then(() => {
-              this.f7.mainView.router.back();
-            });
-        });
+      this.f7.mainView.router.back();
     },
   },
 };
 </script>
+<style>
+.danger .item-text{
+  color: red !important;
+}
+.success .item-text{
+  color: green !important;
+}
+</style>

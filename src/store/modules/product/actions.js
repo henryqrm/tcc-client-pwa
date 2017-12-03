@@ -7,13 +7,4 @@ export default {
   getProduct(context, idProduct) {
     return context.commit(GET_PRODUCT, idProduct);
   },
-  // removeProduct(context, payload) {
-
-  // },
-  // changeProduct(context, payload) {
-
-  // },
-  // deleteProduct(context, payload) {
-
-  // },
 };
