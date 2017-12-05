@@ -10,7 +10,6 @@
           <f7-page>
             <f7-navbar v-if="$theme.material" title="Right Panel" sliding></f7-navbar>
             <f7-block>
-              <p>Oiii</p>
             </f7-block>
             <f7-block-title>Load page in panel</f7-block-title>
             <f7-list>
@@ -20,83 +19,21 @@
         </f7-pages>
       </f7-view>
     </f7-panel>
-
     <!-- Main Views -->
     <f7-views>
-      <f7-view id="main-view" navbar-through :dynamic-navbar="true" main>
-        <!-- iOS Theme Navbar -->
-        <f7-navbar v-if="$theme.ios">
-          <f7-nav-center sliding>Cardápio - Mesa 1</f7-nav-center>
-          <f7-nav-right>
-            <span>Menu</span>
-            <f7-link icon="icon-bars" open-panel="right"></f7-link>
-          </f7-nav-right>
-        </f7-navbar>
-        <f7-pages>
-          <f7-page with-subnavbar no-page-content>
-            <!-- Material Theme Navbar -->
-            <f7-navbar v-if="$theme.material">
-              <f7-nav-center sliding>Cardápio - Mesa 1</f7-nav-center>
-              <f7-nav-right>
-                <span>Menu</span>
-                <f7-link icon="icon-bars" open-panel="right"></f7-link>
-              </f7-nav-right>
-            </f7-navbar>
-            <f7-toolbar tabbar scrollable>
-              <f7-link :tab-link="`#${category.name}`" v-for="(category, $index) in getProducts" :key="$index" active>{{ category.name }}</f7-link>
-            </f7-toolbar>
-            <f7-tabs swipeable>
-              <f7-page-content :id="`${category.name}`" tab v-for="category in getProducts" :key="category.name">
-                <section v-for="product in category.products" :key="product.name">
-                  <f7-block-title>{{ product.name }}</f7-block-title>
-                  <f7-block>
-                    <cardProduct :products="product.items" ></cardProduct>
-                  </f7-block>
-                </section>
-              </f7-page-content>
-            </f7-tabs>
-            <f7-toolbar bottom>
-              <f7-button class="button btn-success" big>FAZER PEDIDOS</f7-button>
-            </f7-toolbar>
-          </f7-page>
-        </f7-pages>
+      <f7-view url="/home/" id="main-view" navbar-through :dynamic-navbar="true" main>
       </f7-view>
     </f7-views>
-    <login></login>
-    <Popup></Popup>
-    <SelectTable></SelectTable>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
-import Popup from '@/components/popup';
-import home from '@/pages/home';
-import login from '@/pages/login';
-import SelectTable from '@/pages/select-table';
-import Product from '@/pages/product';
-import cardProduct from '@/components/card-product';
-import CommandService from './services/command';
 
 export default {
-  name: 'app',
-  components: {
-    home,
-    login,
-    Popup,
-    SelectTable,
-    cardProduct,
-    Product,
-  },
   data() {
     return {
       categories: [],
-      currentTabName: 'Hambúrguer',
-      commandService: new CommandService(this.$resource),
     };
-  },
-  computed: {
-    ...mapGetters('Product', ['getProducts']),
   },
   mounted() {
     setTimeout(() => {
@@ -104,14 +41,8 @@ export default {
     });
   },
   methods: {
-    ...mapActions('Command', ['socket_openCommand']),
-    currentTab(category) {
-      this.currentTabName = category.name;
-      console.log(this.currentTabName);
-    },
     onInit() {
       this.messageLoadApp();
-      this.loadTables();
     },
     messageLoadApp() {
       this.$f7.addNotification({
@@ -119,42 +50,13 @@ export default {
         hold: 3000,
       });
     },
-    loadTables() {
-      this.$f7.mainView.router.load({
-        url: '/select-table',
-        pushState: true,
-        animatePages: true,
-      });
-    },
-    loadUser() {
-      console.log('loadUser');
-    },
-    loadCredCard() {
-      console.log('loadCredCard');
-    },
-    hasCommandSave() {
-      let id = false;
-      if (window) {
-        id = window.localStorage.getItem('CommandID');
-      }
-      return id;
-    },
   },
 };
 </script>
 <style scoped>
-.btn-success{
-  width: 100%!important;
-  background-color: seagreen;
-}
 #app {
   max-width: 768px;
   margin: 0 auto;
   background-color: black;
-}
-
-.size-20 {
-  font-size: 20px;
-  margin-right: 6px;
 }
 </style>

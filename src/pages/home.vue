@@ -1,41 +1,52 @@
 <template>
   <f7-page>
-    <f7-navbar title="Home" back-link="Back" sliding></f7-navbar>
-    <f7-block-title>Navigation</f7-block-title>
-    <f7-list>
-      <f7-list-item link="/about/" title="About"></f7-list-item>
-      <f7-list-item link="/form/" title="Form"></f7-list-item>
-    </f7-list>
-    <f7-block-title>Side Panels</f7-block-title>
-    <f7-block>
-      <f7-grid>
-        <f7-col width="50">
-          <f7-button open-panel="left">Left Panel</f7-button>
-        </f7-col>
-        <f7-col width="50">
-          <f7-button open-panel="right">Right Panel</f7-button>
-        </f7-col>
-      </f7-grid>
-    </f7-block>
-    <f7-block-title>Modals</f7-block-title>
-    <f7-block>
-      <f7-grid>
-        <f7-col width="50">
-          <f7-button open-popup="#popup">Popup</f7-button>
-        </f7-col>
-        <f7-col width="50">
-          <f7-button open-login-screen="#login-screen">Login Screen</f7-button>
-        </f7-col>
-      </f7-grid>
-    </f7-block>
-    <f7-block inner>
-      <p>
-        Home
-      </p>
-    </f7-block>
+    <h2>Bem vindo a casa Happy Hour</h2>
+    <a @click="close">Ver cardápio</a>
+    <img src="static/img/qrcode.svg">
+    <p>Escolha a mesa e escaneie o QR Code</p>
+    <a @click="loadTables">Selecionar mesa</a>
+    <f7-toolbar bottom>
+      <f7-button class="button" big @click="alert">Escanear</f7-button>
+    </f7-toolbar>
   </f7-page>
 </template>
 <script>
-export default {};
+import { mapActions } from 'vuex';
+
+export default {
+  methods: {
+    ...mapActions('Command', ['openCommand']),
+    close() {
+      this.$router.back();
+    },
+    alert() {
+      this.$f7.alert('Use a opção "Selecionar mesa".', 'Não implementado');
+    },
+    loadTables() {
+      this.openCommand();
+      this.$f7.mainView.router.load({
+        url: '/select-table',
+        pushState: true,
+        animatePages: true,
+      });
+    },
+  },
+};
 </script>
 
+<style scoped>
+h2,
+a,
+img,
+p {
+  text-align: center;
+  display: block;
+}
+.button {
+  width: 100%;
+}
+img {
+  margin: 10% auto;
+  width: 60%;
+}
+</style>

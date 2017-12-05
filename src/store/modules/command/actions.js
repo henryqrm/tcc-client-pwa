@@ -1,8 +1,7 @@
 import {
   OPEN_COMMAND,
   CLOSE_COMMAND,
-  PAYMENT_COMMAND,
-  REQUEST_WAITER,
+  ADD_TABLE,
   ADD_PRODUCT,
   REMOVE_PRODUCT,
 } from './mutations';
@@ -11,17 +10,11 @@ export default {
   closeCommend(context) {
     context.commit(CLOSE_COMMAND);
   },
-  openCommand(context, command) {
-    if (window) {
-      window.localStorage.setItem('CommandID', command._id);
-    }
-    return context.commit(OPEN_COMMAND, command);
+  openCommand(context) {
+    return context.commit(OPEN_COMMAND);
   },
-  paymentCommand(context, typePayment) {
-    context.commit(PAYMENT_COMMAND, typePayment);
-  },
-  requestWaiter(context) {
-    context.commit(REQUEST_WAITER);
+  addTable(context, table) {
+    context.commit(ADD_TABLE, table);
   },
   addProduct(context, payload) {
     context.commit(ADD_PRODUCT, payload);

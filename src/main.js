@@ -48,6 +48,7 @@ new Vue({
   cache: true,
   framework7: {
     root: '#app',
+    router: '/',
     material: true,
     routes: Routes,
   },

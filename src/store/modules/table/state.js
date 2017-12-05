@@ -1,10 +1,10 @@
 export default [
   {
-    name: 'Sala',
+    name: 'Salão principal',
     description: '',
     tables: [
       {
-        id: 1,
+        id: 0,
         name: 'Mesa 1',
         occupations: {
           total: 10,
@@ -14,18 +14,18 @@ export default [
         isOccupied: true,
       }, {
         id: 1,
-        name: 'Mesa 1',
+        name: 'Mesa 2',
         occupations: {
-          total: 10,
+          total: 8,
           current: 5,
         },
         status: 'Livre',
         isOccupied: false,
       }, {
-        id: 1,
-        name: 'Mesa 1',
+        id: 2,
+        name: 'Mesa 3',
         occupations: {
-          total: 10,
+          total: 8,
           current: 5,
         },
         status: 'Livre',
@@ -33,41 +33,41 @@ export default [
       },
     ],
   }, {
-    name: 'Sala',
+    name: 'Varanda',
     description: '',
     tables: [
       {
-        id: 1,
-        name: 'Mesa 1',
+        id: 3,
+        name: 'Mesa 4',
         occupations: {
-          total: 10,
+          total: 2,
+          current: 5,
+        },
+        status: 'Ocupado',
+        isOccupied: true,
+      }, {
+        id: 4,
+        name: 'Mesa 5',
+        occupations: {
+          total: 4,
           current: 5,
         },
         status: 'Livre',
         isOccupied: false,
       }, {
-        id: 1,
-        name: 'Mesa 1',
+        id: 5,
+        name: 'Mesa 6',
         occupations: {
-          total: 10,
+          total: 2,
           current: 5,
         },
-        status: 'Livre',
-        isOccupied: false,
+        status: 'Ocupado',
+        isOccupied: true,
       }, {
-        id: 1,
-        name: 'Mesa 1',
+        id: 6,
+        name: 'Mesa 7',
         occupations: {
-          total: 10,
-          current: 5,
-        },
-        status: 'Livre',
-        isOccupied: false,
-      }, {
-        id: 1,
-        name: 'Mesa 1',
-        occupations: {
-          total: 10,
+          total: 4,
           current: 5,
         },
         status: 'Livre',

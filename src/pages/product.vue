@@ -1,11 +1,11 @@
 <template>
     <f7-page>
-      <f7-navbar :title="`Detalhes - ${product.name}`" back-link="Back" sliding></f7-navbar>
+      <f7-navbar :title="product.name" back-link="Back" sliding></f7-navbar>
       <img class="media" :src="product.image" :alt="product.name">
       <div class="heart">
-        <f7-button @click="favorite()" v-if="isFavorite" icon-f7="heart_fill" color="red" style="font-size: 35px;">
+        <f7-button @click="product.heart = false" v-if="product.heart" icon-f7="heart_fill" color="red" style="font-size: 35px;">
         </f7-button>
-        <f7-button @click="favorite()" v-if="!isFavorite" icon-f7="heart" color="red" style="font-size: 35px;">
+        <f7-button @click="product.heart = true" v-if="!product.heart" icon-f7="heart" color="red" style="font-size: 35px;">
         </f7-button>
       </div>
       <f7-block class="wrapper">
@@ -79,9 +79,9 @@
           </f7-tab>
         </f7-tabs>
       </f7-block>
-      <f7-toolbar bottom>
-        <f7-button class="button btn-success" big @click="back()">VOLTAR</f7-button>
-      </f7-toolbar>
+      <f7-fab color="blue" @click="back()">
+        <f7-icon icon="icon-back"></f7-icon>
+      </f7-fab>
     </f7-page>
 </template>
 
@@ -129,9 +129,6 @@ export default {
       // this.socket_addProduct(product);
       /* eslint-disable no-param-reassign */
       product.selected += 1;
-    },
-    favorite() {
-      this.isFavorite = !this.isFavorite;
     },
   },
 };

@@ -23,7 +23,7 @@
               <span class="total">{{product.selected || ''}}</span>
             </div>
             <div class="col-45">
-              <a href="#" class="button" @click="addProduct(product)">Adicionar</a>
+              <a href="#" class="button" @click="add(product)">Adicionar</a>
             </div>
           </div>
         </div>
@@ -32,31 +32,18 @@
 </f7-list>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex';
-import CommandService from './../services/command';
-
 export default {
   name: 'card-product',
   props: ['products'],
-  computed: {
-    ...mapGetters('Command', ['commandId']),
-  },
-  data() {
-    return {
-      commandService: new CommandService(this.$resource),
-    };
-  },
   methods: {
-    ...mapActions('Command', ['socket_addProduct', 'socket_removeProduct']),
     rated(index, rated) {
       return index === Math.floor(rated);
     },
-    addProduct(product) {
+    add(product) {
       this.$f7Router.framework7.addNotification({
         message: `Pedido adicionado: ${product.name}`,
         hold: 3000,
       });
-      // this.socket_addProduct(product);
       /* eslint-disable no-param-reassign */
       product.selected += 1;
     },

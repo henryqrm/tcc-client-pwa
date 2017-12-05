@@ -3,11 +3,21 @@ import CredCard from '@/pages/cred-card';
 import SelectTable from '@/pages/select-table';
 import Command from '@/pages/command';
 import Product from '@/pages/product';
+import Home from '@/pages/home';
+import App from '@/pages/app';
 
 export default [
   {
-    path: '/about/',
+    path: '/app',
+    component: App,
+  },
+  {
+    path: '/about',
     component: About,
+  },
+  {
+    path: '/home',
+    component: Home,
   },
   {
     path: '/product/:id',
@@ -18,7 +28,7 @@ export default [
     component: SelectTable,
   },
   {
-    path: '/cred-card/',
+    path: '/payment',
     component: CredCard,
   },
   {
