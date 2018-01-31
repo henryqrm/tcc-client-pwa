@@ -5,4 +5,4 @@ app.use(express.static(`${__dirname}/dist`));
 
 app.get('*', (req, res) => {
     res.sendFile(`${__dirname}/dist/index.html`);
-}).listen(80);
+}).listen(8080);

@@ -1,7 +1,7 @@
 <template>
     <f7-page>
       <f7-navbar :title="product.name" back-link="Back" sliding></f7-navbar>
-      <img class="media" :src="product.image" :alt="product.name">
+      <img class="media" :src="product.image">
       <div class="heart">
         <f7-button @click="product.heart = false" v-if="product.heart" icon-f7="heart_fill" color="red" style="font-size: 35px;">
         </f7-button>
@@ -115,7 +115,7 @@ export default {
       }
       this.$f7Router.framework7.addNotification({
         message: `Pedido removido: ${product.name}`,
-        hold: 3000,
+        hold: 1000,
       });
       // this.socket_addProduct(product);
       /* eslint-disable no-param-reassign */
@@ -124,7 +124,7 @@ export default {
     addProduct(product) {
       this.$f7Router.framework7.addNotification({
         message: `Pedido adicionado: ${product.name}`,
-        hold: 3000,
+        hold: 1000,
       });
       // this.socket_addProduct(product);
       /* eslint-disable no-param-reassign */

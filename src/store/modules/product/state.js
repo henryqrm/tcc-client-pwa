@@ -19,6 +19,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 5,
+            totalValue: 0,
           },
           {
             name: 'PORQUER',
@@ -32,6 +33,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
           {
             name: 'HIPSTER PIGGY',
@@ -45,6 +47,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
           {
             name: 'BURLESCO',
@@ -58,6 +61,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
           {
             name: 'EAT SWEET',
@@ -71,6 +75,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
           {
             name: 'TRADICIONAL',
@@ -84,6 +89,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
         ],
       },
@@ -108,6 +114,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 3,
+            totalValue: 0,
           },
           {
             name: 'CAIP UVA COM HORTELÃ',
@@ -121,6 +128,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
           {
             name: 'CAIP DE LIMÃO',
@@ -134,6 +142,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 5,
+            totalValue: 0,
           },
           {
             name: 'CAIP SICILIANA',
@@ -147,6 +156,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 5,
+            totalValue: 0,
           },
           {
             name: 'SMOKE ON THE WATER',
@@ -160,6 +170,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
           {
             name: 'SCHWEPPES CITRUS',
@@ -173,6 +184,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 0,
+            totalValue: 0,
           },
           {
             name: 'CHÁ GELADO LIMÃO',
@@ -186,6 +198,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 5,
+            totalValue: 0,
           },
           {
             name: 'REFRIGERANTE LATA',
@@ -199,6 +212,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 0,
+            totalValue: 0,
           },
           {
             name: 'BRAHMA (600ml)',
@@ -212,6 +226,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
         ],
       },
@@ -236,6 +251,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
           {
             name: 'CHICKEN WINGS',
@@ -249,6 +265,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 5,
+            totalValue: 0,
           },
           {
             name: 'BACON WRAPPED ONION RINGS',
@@ -262,6 +279,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
           {
             name: 'BACON HARUMAKI',
@@ -275,6 +293,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
           {
             name: 'HEART ATTACK',
@@ -288,6 +307,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 5,
+            totalValue: 0,
           },
           {
             name: 'ONION RINGS',
@@ -301,6 +321,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
           {
             name: 'FRITAS',
@@ -314,6 +335,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
         ],
       },
@@ -338,6 +360,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
           {
             name: 'NUTELLA EXPLOSION',
@@ -351,6 +374,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 5,
+            totalValue: 0,
           },
           {
             name: 'WAFFLE',
@@ -364,6 +388,7 @@ export default [
             amountUnit: '',
             selected: 0,
             rated: 4,
+            totalValue: 0,
           },
         ],
       },

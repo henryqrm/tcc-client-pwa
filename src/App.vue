@@ -47,7 +47,7 @@ export default {
     messageLoadApp() {
       this.$f7.addNotification({
         message: 'Aplicativo carregado',
-        hold: 3000,
+        hold: 1000,
       });
     },
   },

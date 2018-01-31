@@ -1,4 +1,38 @@
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>tcc-client-pwa</title><link rel=icon type=image/png sizes=32x32 href=/static/img/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/static/img/icons/favicon-16x16.png><!--[if IE]><link rel="shortcut icon" href="/static/img/icons/favicon.ico"><![endif]--><link rel=manifest href=/static/manifest.json><meta name=theme-color content=#4DBA87><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content=tcc-client-pwa><link rel=apple-touch-icon href=/static/img/icons/apple-touch-icon-152x152.png><meta name=msapplication-TileImage content=/static/img/icons/msapplication-icon-144x144.png><meta name=msapplication-TileColor content=#000000><link rel=preload href=/static/js/app.b8df9bb73806834aacf5.js as=script><link rel=preload href=/static/css/app.a4cf1da6e99eaf93e0dca912045c1710.css as=style><link rel=preload href=/static/js/vendor.38d821056109dddbb504.js as=script><link rel=preload href=/static/js/manifest.d420f831175a7fec1cd4.js as=script><link href=/static/css/app.a4cf1da6e99eaf93e0dca912045c1710.css rel=stylesheet></head><body><noscript>This is your fallback content in case JavaScript fails to load.</noscript><div id=app></div><script>(function() {
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>tcc-client-pwa</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/img/icons/favicon-16x16.png">
+    <!--[if IE]><link rel="shortcut icon" href="/static/img/icons/favicon.ico"><![endif]-->
+    <!-- Add to home screen for Android and modern mobile browsers -->
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#4DBA87">
+
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="tcc-client-pwa">
+    <link rel="apple-touch-icon" href="/static/img/icons/apple-touch-icon-152x152.png">
+    <!-- Add to home screen for Windows -->
+    <meta name="msapplication-TileImage" content="/static/img/icons/msapplication-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/static/js/app.0694f9b3a04df22cdd3e.js" as="script">
+    <link rel="preload" href="/static/css/app.bbdca67cea7b8bc9ef4f689bddf678fd.css" as="style">
+    <link rel="preload" href="/static/js/vendor.2a257c7f9192cea8ba2c.js" as="script">
+    <link rel="preload" href="/static/js/manifest.fe1f750550aaf477c15f.js" as="script">
+  <link href="/static/css/app.bbdca67cea7b8bc9ef4f689bddf678fd.css" rel="stylesheet"></head>
+  <body>
+    <noscript>
+      This is your fallback content in case JavaScript fails to load.
+    </noscript>
+    <div id="app"></div>
+    <!-- Todo: only include in production -->
+    <script>(function() {
   'use strict';
 
   // Check to make sure service workers are supported in the current browser,
@@ -52,4 +86,8 @@
         });
       }
   });
-})();</script><script type=text/javascript src=/static/js/manifest.d420f831175a7fec1cd4.js></script><script type=text/javascript src=/static/js/vendor.38d821056109dddbb504.js></script><script type=text/javascript src=/static/js/app.b8df9bb73806834aacf5.js></script></body></html>
+})();
+</script>
+    <!-- built files will be auto injected -->
+  <script type="text/javascript" src="/static/js/manifest.fe1f750550aaf477c15f.js"></script><script type="text/javascript" src="/static/js/vendor.2a257c7f9192cea8ba2c.js"></script><script type="text/javascript" src="/static/js/app.0694f9b3a04df22cdd3e.js"></script></body>
+</html>

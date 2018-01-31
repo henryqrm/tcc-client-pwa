@@ -11,7 +11,7 @@
       link-view="#main-view"
       link-close-panel
       >
-        <div slot="media"><img class="media" :src="product.image" :alt="product.name"></div>
+        <div slot="media"><img class="media" :src="product.image"></div>
         <div slot="inner">
           <div class="row">
             <div class="col-50">
@@ -42,7 +42,7 @@ export default {
     add(product) {
       this.$f7Router.framework7.addNotification({
         message: `Pedido adicionado: ${product.name}`,
-        hold: 3000,
+        hold: 1000,
       });
       /* eslint-disable no-param-reassign */
       product.selected += 1;
@@ -51,7 +51,7 @@ export default {
       this.socket_removeProduct(product).then(() => {
         this.$f7Router.framework7.addNotification({
           message: `Pedido removido: ${product.name}`,
-          hold: 3000,
+          hold: 1000,
         });
         this.countOfProduts -= 1;
       });

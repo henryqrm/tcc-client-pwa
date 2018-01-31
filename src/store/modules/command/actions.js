@@ -4,14 +4,18 @@ import {
   ADD_TABLE,
   ADD_PRODUCT,
   REMOVE_PRODUCT,
+  SUB,
 } from './mutations';
 
 export default {
   closeCommend(context) {
     context.commit(CLOSE_COMMAND);
   },
+  subTotal(context) {
+    context.commit(SUB);
+  },
   openCommand(context) {
-    return context.commit(OPEN_COMMAND);
+    context.commit(OPEN_COMMAND);
   },
   addTable(context, table) {
     context.commit(ADD_TABLE, table);
